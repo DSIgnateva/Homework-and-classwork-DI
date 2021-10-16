@@ -59,9 +59,13 @@ def addition(first, second):
 
 
 def switch(first, node1, node2):
+    if first is None:
+        return None
     current = first
     reserve = node2.next
-    node2.next = node1.next
+    if first == node1:
+        node2.next = first.next
+        first = node2
     flag = False
     while current is not None:
         if current.next == node1:
@@ -84,9 +88,9 @@ target1, target2 = 0, 0  # понадобятся для задачи 4
 
 for i in range(2, 10):
     node = Node(i)
-    if i == 4:
-        target1 = node
-    if i == 7:
+    if i == 2:
+        target1 = first
+    if i == 9:
         target2 = node
     current1.next = node
     current1 = current1.next
@@ -96,4 +100,5 @@ for i in range(2, 10):
     current2.next = node
     current2 = current2.next
 
+print_list(first)
 print_list(switch(first, target1, target2))
