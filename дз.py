@@ -1,74 +1,46 @@
-class Node:
-    def __init__(self, value):
-        self.value = value
-        self.next = None
+# задача 4
 
-
-def print_list(first):
-    # Выводим список
-    print("!!!!!")
-    current = first
-    while current is not None:
-        print(current.value)
-        current = current.next
-    print(current)  # None
-
-
-# задача 6
-
-
-def list_len(first):
-    current = first
-    count = 0
-    while current is not None:
-        current = current.next
-        count += 1
-    return count
-
+a, b = sorted(list("автор")), sorted(list('товар'))
+if len(a) == len(b):
+    for i in range(len(a)):
+        if a[i] != b[i]:
+            print('не анаграмма')
+            break
+    else:
+        print('анаграмма')
 
 # задача 5
 
+a = [1, 2, 3, 4]
+for i in range(len(a)):
+    a[i] = f'{a[i]}'
+b = int(''.join(a))
+a = list(str(b + 1))
+print(a)
 
-def get_by_index(first, position):
-    current = first
-    count = 0
-    while count != position:
-        count += 1
-        current = current.next
-    return current.value
+# задача 6
 
+n = 6
+s = [3, 2, 7, 1, 9, 3]
+for i in range(len(s)):
+    if s[i] < n:
+        if (n - s[i]) in s:
+            print(s[i], n - s[i])
+            break
+else:
+    print('нет таких чисел')
 
-# задача 3
+# задача 7
 
+print('даша'[::-1])
 
-def addition(first, second):
-    current1, current2 = first, second
-    third = Node(int(current1.value + current2.value))
-    current3 = third
-    current1, current2 = current1.next, current2.next
-    while current1 is not None:
-        node = Node(int(current1.value + current2.value))
-        current3.next = node
-        current3 = current3.next
-        current1 = current1.next
-        current2 = current2.next
-    return third
+# задач 8
 
-
-
-first = Node(1)
-second = Node(1)
-current1 = first
-current2 = second
-
-for i in range(2, 10):
-    node = Node(i)
-    current1.next = node
-    current1 = current1.next
-
-for i in range(2, 10):
-    node = Node(i)
-    current2.next = node
-    current2 = current2.next
-
-print_list(addition(first, second))
+a, b = 'А роза, упала на, лапу Азора'.lower(), ''
+for elem in a:
+    if elem.isalpha():
+        b += elem
+if b == b[::-1]:
+    print('палиндром')
+else:
+    print('не палиндром')
