@@ -80,6 +80,30 @@ def switch(first, node1, node2):
     return first
 
 
+# задача 1
+
+
+def reverse_by_links(first):
+    if first is None:
+        return None
+    elif first.next is None:
+        return first
+    if first.next.next is None:
+        return switch(first, first, first.next)
+    var1 = first
+    var2 = var1.next
+    current = var2.next
+    var2.next = var1
+    var1.next = None
+    while current.next is not None:
+        var1 = var2
+        var2 = current
+        current = current.next
+        var2.next = var1
+    current.next = var2
+    return current
+
+
 first = Node(1)
 second = Node(1)
 current1 = first
@@ -100,5 +124,4 @@ for i in range(2, 10):
     current2.next = node
     current2 = current2.next
 
-print_list(first)
-print_list(switch(first, target1, target2))
+print_list(reverse_by_links(first))
